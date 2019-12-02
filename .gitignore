@@ -1,0 +1,7 @@
+.metadata
+src/output
+.sonarlint
+.classpath
+*/.gitignore
+.project
+.settings
