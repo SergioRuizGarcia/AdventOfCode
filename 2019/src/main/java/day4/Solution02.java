@@ -21,7 +21,6 @@ public class Solution02 {
 		Integer currentNumber = lowerBound;
 		while (currentNumber < upperBound) {
 			if (fitsConditions(currentNumber, lowerBound, upperBound)) {
-				System.out.println(currentNumber);
 				possiblePasswords.add(lowerBound);
 				currentNumber = currentNumber + 1;
 			} else {
