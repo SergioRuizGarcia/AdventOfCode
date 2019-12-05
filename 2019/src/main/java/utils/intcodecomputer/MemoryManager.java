@@ -22,7 +22,26 @@ public class MemoryManager {
 	
 	public int getNextElement() {
 		checkValidAddress(instructionPointer);
-		return memory[instructionPointer++];
+		int nextElement = memory[instructionPointer];
+		advancePointer(1);
+		return nextElement;
+	}
+	
+	public int[] getNextNElements(int nElements) {
+		checkValidAddress(instructionPointer + nElements);
+		int[] nextNElements = new int[nElements];
+		System.arraycopy(memory, instructionPointer, nextNElements, 0, nElements);
+		advancePointer(nElements);
+		return nextNElements;
+	}
+	
+	public void writeToAddress(int address, int value) {
+		checkValidAddress(address);
+		memory[address] = value;
+	}
+	
+	public boolean hasMoreToRead() {
+		return instructionPointer < memory.length;
 	}
 	
 	private void checkValidAddress(int address) {

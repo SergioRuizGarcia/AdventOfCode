@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import utils.FileUtils;
-import utils.IntcodeComputer;
+import utils.intcodecomputer.IntcodeComputer;
 
 public class Solution02 {
 	
@@ -17,7 +17,9 @@ public class Solution02 {
 		
 		for (int i = 0; i < 100; i++) {
 			for (int j = 0; j < 100; j++) {
-				if (IntcodeComputer.executeProgram(initialMemoryState, i, j) == targetValue) {
+				initialMemoryState[1] = i;
+				initialMemoryState[2] = j;
+				if (IntcodeComputer.executeProgram(initialMemoryState) == targetValue) {
 					FileUtils.writeToFile("src/output/day2/output_02.txt", String.valueOf(i * 100 + j));
 					return;
 				}
