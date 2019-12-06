@@ -14,8 +14,10 @@ public class EqualsInstruction implements Instruction {
 
 	private final Deque<ParameterMode> parameterModes = new ArrayDeque<>();
 	
-	public EqualsInstruction(Deque<ParameterMode> parameterModes) {
+	@Override
+	public Instruction using(Deque<ParameterMode> parameterModes) {
 		this.parameterModes.addAll(parameterModes);
+		return this;
 	}
 	
 	@Override

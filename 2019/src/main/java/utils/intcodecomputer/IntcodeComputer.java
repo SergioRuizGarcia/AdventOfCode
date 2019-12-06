@@ -13,7 +13,8 @@ public class IntcodeComputer {
 		MemoryManager memoryManager = new MemoryManager(initialMemory);
 		
 		while(memoryManager.hasMoreToRead()) {
-			Instruction instruction = InstructionFactory.getInstruction(memoryManager.getNextElement());
+			InstructionFactory instructionFactory = new InstructionFactory();
+			Instruction instruction = instructionFactory.getInstruction(memoryManager.getNextElement());
 			if (instruction.getOpCode() == OpCode.HALT) {
 				break;
 			}
