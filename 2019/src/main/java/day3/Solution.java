@@ -9,7 +9,7 @@ import utils.FileUtils;
 public class Solution {
 	
 	public static void main(String[] args) throws IOException {
-		List<String> inputLines = FileUtils.readFromFile("src/main/resources/day3/input_01.txt");
+		List<String> inputLines = FileUtils.readFromFile("2019/src/main/resources/day3/input_01.txt");
 		String[] wire1Movements = inputLines.get(0).split(",");
 		String[] wire2Movements = inputLines.get(1).split(",");
 		Point centralPort = new Point(0, 0);
@@ -53,8 +53,8 @@ public class Solution {
 			
 		}
 		
-		FileUtils.writeToFile("src/output/day3/output_01.txt", String.valueOf(minDistanceToCentralPort));
-		FileUtils.writeToFile("src/output/day3/output_02.txt", String.valueOf(minStepsFromCentralPort));
+		FileUtils.writeToFile("2019/src/output/day3/output_01.txt", String.valueOf(minDistanceToCentralPort));
+		FileUtils.writeToFile("2019/src/output/day3/output_02.txt", String.valueOf(minStepsFromCentralPort));
 	}
 	
 	private static List<SimpleSegment> getSegmentFromPointWithMovements(final Point startingPoint, final String[] movements) {

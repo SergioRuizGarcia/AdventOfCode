@@ -16,11 +16,11 @@ public class Solution02 {
 	}
 	
 	public static void main(String[] args) throws IOException {
-		List<String> inputLines = FileUtils.readFromFile("src/main/resources/day1/input_02.txt");
+		List<String> inputLines = FileUtils.readFromFile("2019/src/main/resources/day1/input_02.txt");
 		int fuel = 0;
 		for (String line : inputLines) {
 			fuel += getFuelForLoad(Integer.valueOf(line));
 		}
-		FileUtils.writeToFile("src/output/day1/output_02.txt", String.valueOf(fuel));
+		FileUtils.writeToFile("2019/src/output/day1/output_02.txt", String.valueOf(fuel));
 	}
 }

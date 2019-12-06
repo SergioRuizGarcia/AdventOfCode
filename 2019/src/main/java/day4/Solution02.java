@@ -9,7 +9,7 @@ import utils.FileUtils;
 public class Solution02 {
 	
 	public static void main(String[] args) throws IOException {
-		List<String> inputLines = FileUtils.readFromFile("src/main/resources/day4/input_02.txt");
+		List<String> inputLines = FileUtils.readFromFile("2019/src/main/resources/day4/input_02.txt");
 		Integer lowerBound = Integer.valueOf(inputLines.get(0));
 		Integer upperBound = Integer.valueOf(inputLines.get(1));
 		
@@ -33,7 +33,7 @@ public class Solution02 {
 			}
 		}
 		
-		FileUtils.writeToFile("src/output/day4/output_02.txt", String.valueOf(possiblePasswords.size()));
+		FileUtils.writeToFile("2019/src/output/day4/output_02.txt", String.valueOf(possiblePasswords.size()));
 	}
 	
 	private static boolean fitsConditions(final Integer number, final Integer lowerBound, final Integer upperBound) {
