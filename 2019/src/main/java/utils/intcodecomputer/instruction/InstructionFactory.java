@@ -1,6 +1,8 @@
 package utils.intcodecomputer.instruction;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
 
 import utils.intcodecomputer.OpCode;
@@ -23,32 +25,33 @@ public class InstructionFactory {
 								hasParameterModes 
 									? instruction.substring(instruction.length() - 2)
 									: instruction));
-		List<ParameterMode> parameterModes = new ArrayList<>();
+
+		final Deque<ParameterMode> parameterModesDeque = new ArrayDeque<>();
 		if (hasParameterModes) {
 			String[] splitInstruction = instruction.substring(0, instruction.length()-2).split("");
 			for (int i = 0; i < splitInstruction.length; i++) {
-				parameterModes.add(ParameterMode.fromCode(splitInstruction[i]));
+				parameterModesDeque.push(ParameterMode.fromCode(splitInstruction[i]));
 			}
 		}
 		
 		if (OpCode.ADDITION == opCode) {
-			return new AdditionInstruction(parameterModes.toArray(new ParameterMode[0]));
+			return new AdditionInstruction(parameterModesDeque);
 		} else if (OpCode.MULTIPLICATION == opCode) {
-			return new MultiplicationInstruction(parameterModes.toArray(new ParameterMode[0]));
+			return new MultiplicationInstruction(parameterModesDeque);
 		} else if (OpCode.HALT == opCode) {
 			return new HaltInstruction();
 		} else if (OpCode.INPUT == opCode) {
 			return new InputInstruction();
 		} else if (OpCode.OUTPUT == opCode) {
-			return new OutputInstruction(parameterModes.toArray(new ParameterMode[0]));
+			return new OutputInstruction(parameterModesDeque);
 		} else if (OpCode.JUMP_IF_TRUE == opCode) {
-			return new JumpIfTrueInstruction(parameterModes.toArray(new ParameterMode[0]));
+			return new JumpIfTrueInstruction(parameterModesDeque);
 		} else if (OpCode.JUMP_IF_FALSE == opCode) {
-			return new JumpIfFalseInstruction(parameterModes.toArray(new ParameterMode[0]));
+			return new JumpIfFalseInstruction(parameterModesDeque);
 		} else if (OpCode.LESS_THAN == opCode) {
-			return new LessThanInstruction(parameterModes.toArray(new ParameterMode[0]));
+			return new LessThanInstruction(parameterModesDeque);
 		} else if (OpCode.EQUALS == opCode) {
-			return new EqualsInstruction(parameterModes.toArray(new ParameterMode[0]));
+			return new EqualsInstruction(parameterModesDeque);
 		}  
 		throw new UnsupportedOperationException(String.format(
 				"The instruction of OpCode %s is not yet "

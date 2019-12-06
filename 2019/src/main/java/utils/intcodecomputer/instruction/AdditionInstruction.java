@@ -14,10 +14,8 @@ public class AdditionInstruction implements Instruction {
 
 	private final Deque<ParameterMode> parameterModes = new ArrayDeque<>();
 	
-	public AdditionInstruction(ParameterMode... parameterModes) {
-		for (ParameterMode parameterMode : parameterModes) {
-			this.parameterModes.push(parameterMode);
-		}
+	public AdditionInstruction(Deque<ParameterMode> parameterModes) {
+		this.parameterModes.addAll(parameterModes);
 	}
 	
 	@Override

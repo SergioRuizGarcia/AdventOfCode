@@ -11,10 +11,8 @@ public class OutputInstruction implements Instruction {
 
 	private final Deque<ParameterMode> parameterModes = new ArrayDeque<>();
 	
-	public OutputInstruction(ParameterMode... parameterModes) {
-		for (ParameterMode parameterMode : parameterModes) {
-			this.parameterModes.push(parameterMode);
-		}
+	public OutputInstruction(Deque<ParameterMode> parameterModes) {
+		this.parameterModes.addAll(parameterModes);
 	}
 	
 	@Override

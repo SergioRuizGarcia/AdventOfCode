@@ -14,10 +14,8 @@ public class LessThanInstruction implements Instruction {
 
 	private final Deque<ParameterMode> parameterModes = new ArrayDeque<>();
 	
-	public LessThanInstruction(ParameterMode... parameterModes) {
-		for (ParameterMode parameterMode : parameterModes) {
-			this.parameterModes.push(parameterMode);
-		}
+	public LessThanInstruction(Deque<ParameterMode> parameterModes) {
+		this.parameterModes.addAll(parameterModes);
 	}
 	
 	@Override

@@ -14,10 +14,8 @@ public class JumpIfFalseInstruction implements Instruction {
 
 	private final Deque<ParameterMode> parameterModes = new ArrayDeque<>();
 	
-	public JumpIfFalseInstruction(ParameterMode... parameterModes) {
-		for (ParameterMode parameterMode : parameterModes) {
-			this.parameterModes.push(parameterMode);
-		}
+	public JumpIfFalseInstruction(Deque<ParameterMode> parameterModes) {
+		this.parameterModes.addAll(parameterModes);
 	}
 	
 	@Override
