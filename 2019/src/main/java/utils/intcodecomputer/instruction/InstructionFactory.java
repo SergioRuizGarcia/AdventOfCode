@@ -42,7 +42,15 @@ public class InstructionFactory {
 			return new InputInstruction();
 		} else if (OpCode.OUTPUT == opCode) {
 			return new OutputInstruction(parameterModes.toArray(new ParameterMode[0]));
-		}
+		} else if (OpCode.JUMP_IF_TRUE == opCode) {
+			return new JumpIfTrueInstruction(parameterModes.toArray(new ParameterMode[0]));
+		} else if (OpCode.JUMP_IF_FALSE == opCode) {
+			return new JumpIfFalseInstruction(parameterModes.toArray(new ParameterMode[0]));
+		}  else if (OpCode.LESS_THAN == opCode) {
+			return new LessThanInstruction(parameterModes.toArray(new ParameterMode[0]));
+		}  else if (OpCode.EQUALS == opCode) {
+			return new EqualsInstruction(parameterModes.toArray(new ParameterMode[0]));
+		}  
 		throw new UnsupportedOperationException(String.format(
 				"The instruction of OpCode %s is not yet "
 				+ "implemented", opCode.name()));
