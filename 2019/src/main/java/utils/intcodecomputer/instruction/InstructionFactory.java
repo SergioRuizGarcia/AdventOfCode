@@ -2,7 +2,6 @@ package utils.intcodecomputer.instruction;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import utils.intcodecomputer.OpCode;
 import utils.intcodecomputer.ParameterMode;
@@ -38,7 +37,7 @@ public class InstructionFactory {
 			return new MultiplicationInstruction(parameterModes.toArray(new ParameterMode[0]));
 		} else if (OpCode.HALT == opCode) {
 			return new HaltInstruction();
-		}  else if (OpCode.INPUT == opCode) {
+		} else if (OpCode.INPUT == opCode) {
 			return new InputInstruction();
 		} else if (OpCode.OUTPUT == opCode) {
 			return new OutputInstruction(parameterModes.toArray(new ParameterMode[0]));
@@ -46,9 +45,9 @@ public class InstructionFactory {
 			return new JumpIfTrueInstruction(parameterModes.toArray(new ParameterMode[0]));
 		} else if (OpCode.JUMP_IF_FALSE == opCode) {
 			return new JumpIfFalseInstruction(parameterModes.toArray(new ParameterMode[0]));
-		}  else if (OpCode.LESS_THAN == opCode) {
+		} else if (OpCode.LESS_THAN == opCode) {
 			return new LessThanInstruction(parameterModes.toArray(new ParameterMode[0]));
-		}  else if (OpCode.EQUALS == opCode) {
+		} else if (OpCode.EQUALS == opCode) {
 			return new EqualsInstruction(parameterModes.toArray(new ParameterMode[0]));
 		}  
 		throw new UnsupportedOperationException(String.format(
