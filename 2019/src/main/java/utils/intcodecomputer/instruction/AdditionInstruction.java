@@ -21,7 +21,8 @@ public class AdditionInstruction implements Instruction {
 	}
 	
 	@Override
-	public void operate(MemoryManager memoryManager) {
+	public void operate(MemoryManager memoryManager, int... input) {
+		checkArguments(input);
 		int[] parameters = memoryManager.getNextNElements(NUMBER_OF_PARAMETERS);
 		for (int i = 0; i < NUMBER_OF_PARAMETERS - 1; i++) {
 			if (ParameterMode.POSITION_MODE.equals(Optional.ofNullable(parameterModes.poll()).orElse(ParameterMode.POSITION_MODE))) {

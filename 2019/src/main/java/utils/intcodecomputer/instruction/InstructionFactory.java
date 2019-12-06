@@ -2,6 +2,7 @@ package utils.intcodecomputer.instruction;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import utils.intcodecomputer.OpCode;
 import utils.intcodecomputer.ParameterMode;
@@ -37,6 +38,10 @@ public class InstructionFactory {
 			return new MultiplicationInstruction(parameterModes.toArray(new ParameterMode[0]));
 		} else if (OpCode.HALT == opCode) {
 			return new HaltInstruction();
+		}  else if (OpCode.INPUT == opCode) {
+			return new InputInstruction();
+		} else if (OpCode.OUTPUT == opCode) {
+			return new OutputInstruction(parameterModes.toArray(new ParameterMode[0]));
 		}
 		throw new UnsupportedOperationException(String.format(
 				"The instruction of OpCode %s is not yet "

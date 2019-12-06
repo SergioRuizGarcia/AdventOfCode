@@ -6,6 +6,8 @@ public enum OpCode {
 	
 	ADDITION(1),
 	MULTIPLICATION(2),
+	INPUT(3),
+	OUTPUT(4),
 	HALT(99);
 	
 	private int code;

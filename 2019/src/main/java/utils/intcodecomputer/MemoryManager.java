@@ -20,6 +20,11 @@ public class MemoryManager {
 		instructionPointer += amount;
 	}
 	
+	public void setInstructionPointer(int newAddress) {
+		checkValidAddress(newAddress);
+		instructionPointer = newAddress;
+	}
+	
 	public int getNextElement() {
 		checkValidAddress(instructionPointer);
 		int nextElement = memory[instructionPointer];
@@ -46,7 +51,7 @@ public class MemoryManager {
 	
 	private void checkValidAddress(int address) {
 		if (address > memory.length-1 || address < 0) {
-			throw new IllegalArgumentException(String.format("The value requested is out of the maximum range permitted (0 - %d)", memory.length-1));
+			throw new IllegalArgumentException(String.format("The value requested (%d) is out of the maximum range permitted (0 - %d)", address, memory.length-1));
 		}
 	}
 }
