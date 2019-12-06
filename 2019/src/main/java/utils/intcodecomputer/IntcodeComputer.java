@@ -10,11 +10,7 @@ public class IntcodeComputer {
 	}
 	
 	public static int executeProgram(int[] initialMemory, int... args) {
-		int[] memory = new int[initialMemory.length];
-		
-		System.arraycopy(initialMemory, 0, memory, 0, initialMemory.length);
-		
-		MemoryManager memoryManager = new MemoryManager(memory);
+		MemoryManager memoryManager = new MemoryManager(initialMemory);
 		
 		while(memoryManager.hasMoreToRead()) {
 			Instruction instruction = InstructionFactory.getInstruction(memoryManager.getNextElement());
