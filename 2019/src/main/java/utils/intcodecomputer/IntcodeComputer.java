@@ -28,6 +28,6 @@ public class IntcodeComputer {
 			
 			instruction.operate(arguments);
 		}
-		return memoryManager.getValueAtAddress(0);
+		return memoryManager.hasOutputs() ? memoryManager.getLastOutput() : memoryManager.getValueAtAddress(0);
 	}
 }

@@ -3,11 +3,16 @@ package utils.intcodecomputer;
 public class MemoryManager {
 	private final int[] memory;
 	private int instructionPointer;
+	private final int[] outputs;
+	private int outputPointer;
 	
 	public MemoryManager(final int[] memory) {
 		this.memory = new int[memory.length];
 		System.arraycopy(memory, 0, this.memory, 0, memory.length);
 		instructionPointer = 0;
+		// At most we will have half the length of the whole program as output
+		outputs = new int[memory.length/2];
+		outputPointer = 0;
 	}
 	
 	public int getValueAtAddress(int address) {
@@ -47,6 +52,26 @@ public class MemoryManager {
 	
 	public boolean hasMoreToRead() {
 		return instructionPointer < memory.length;
+	}
+	
+	public boolean hasOutputs() {
+		return outputPointer != 0;
+	}
+	
+	public void writeOutput(int output) {
+		outputs[outputPointer] = output;
+		outputPointer++;
+	}
+	
+	public int getNthOutput(int outputIndex) {
+		if (outputIndex >= outputPointer || outputIndex < 0) {
+			throw new IllegalArgumentException(String.format("The output requested (%d) is out of the maximum range permitted (0 - %d)", outputIndex, outputPointer-1));
+		}
+		return outputs[outputIndex];
+	}
+	
+	public int getLastOutput() {
+		return outputs[outputPointer-1];
 	}
 	
 	private void checkValidAddress(int address) {

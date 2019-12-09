@@ -27,8 +27,7 @@ public class OutputInstruction implements Instruction {
 	@Override
 	public void operate(Deque<Integer> input) {
 		int parameter = memoryManager.getNextElement();
-		
-		System.out.println(memoryManager.getValueAtAddress(parameter));
+		memoryManager.writeOutput(memoryManager.getValueAtAddress(parameter));
 	}
 
 	@Override
