@@ -11,6 +11,7 @@ import utils.intcodecomputer.ParameterMode;
 public class JumpIfTrueInstruction implements Instruction {
 	
 	private static final int NUMBER_OF_PARAMETERS = 2;
+	private MemoryManager memoryManager;
 
 	private final Deque<ParameterMode> parameterModes = new ArrayDeque<>();
 	
@@ -21,9 +22,13 @@ public class JumpIfTrueInstruction implements Instruction {
 	}
 	
 	@Override
-	public void operate(MemoryManager memoryManager, int... input) {
-		checkArguments(input);
-		
+	public Instruction using(MemoryManager memoryManager) {
+		this.memoryManager = memoryManager;
+		return this;
+	}
+	
+	@Override
+	public void operate(Deque<Integer> input) {
 		int[] parameters = memoryManager.getNextNElements(NUMBER_OF_PARAMETERS);
 		for (int i = 0; i < NUMBER_OF_PARAMETERS; i++) {
 			if (ParameterMode.POSITION_MODE.equals(Optional.ofNullable(parameterModes.poll()).orElse(ParameterMode.POSITION_MODE))) {

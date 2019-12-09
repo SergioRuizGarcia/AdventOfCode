@@ -1,6 +1,7 @@
 package utils.intcodecomputer.instruction;
 
-import utils.intcodecomputer.MemoryManager;
+import java.util.Deque;
+
 import utils.intcodecomputer.OpCode;
 
 public class HaltInstruction implements Instruction {
@@ -10,7 +11,7 @@ public class HaltInstruction implements Instruction {
 	}
 	
 	@Override
-	public void operate(MemoryManager memoryManager, int... input) {
+	public void operate(Deque<Integer> input) {
 		throw new UnsupportedOperationException("This instruction does not operate on memory");
 	}
 

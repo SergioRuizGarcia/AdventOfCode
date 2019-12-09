@@ -7,7 +7,7 @@ import utils.intcodecomputer.OpCode;
 import utils.intcodecomputer.ParameterMode;
 
 public interface Instruction {
-	void operate(MemoryManager memoryManager, int... input);
+	void operate(Deque<Integer> input);
 	
 	OpCode getOpCode();
 	
@@ -15,13 +15,8 @@ public interface Instruction {
 		return this;
 	}
 	
-	default boolean hasArguments() {
-		return false;
+	default Instruction using(MemoryManager memoryManager) {
+		return this;
 	}
 	
-	default void checkArguments(int... input) {
-		if (input.length != 0) {
-			throw new IllegalArgumentException("This instruction does not take any argument");
-		}
-	}
 }

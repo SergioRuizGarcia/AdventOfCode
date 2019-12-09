@@ -10,6 +10,7 @@ import utils.intcodecomputer.ParameterMode;
 public class OutputInstruction implements Instruction {
 
 	private final Deque<ParameterMode> parameterModes = new ArrayDeque<>();
+	private MemoryManager memoryManager;
 	
 	@Override
 	public Instruction using(Deque<ParameterMode> parameterModes) {
@@ -18,9 +19,13 @@ public class OutputInstruction implements Instruction {
 	}
 	
 	@Override
-	public void operate(MemoryManager memoryManager, int... input) {
-		checkArguments(input);
-		
+	public Instruction using(MemoryManager memoryManager) {
+		this.memoryManager = memoryManager;
+		return this;
+	}
+	
+	@Override
+	public void operate(Deque<Integer> input) {
 		int parameter = memoryManager.getNextElement();
 		
 		System.out.println(memoryManager.getValueAtAddress(parameter));
