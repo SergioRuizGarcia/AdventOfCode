@@ -14,7 +14,8 @@ public class Solution02 {
 		
 		int[] initialMemory = Arrays.asList(inputLines.get(0).split(",")).stream().mapToInt(Integer::valueOf).toArray();
 		int argument = 5;
-		IntcodeComputer.executeProgram(initialMemory, argument);
-		
+		IntcodeComputer intcodeComputer = new IntcodeComputer(initialMemory);
+		intcodeComputer.executeProgram(argument);
+		System.out.println(intcodeComputer.getProgramOutput());
 	}
 }

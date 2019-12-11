@@ -16,6 +16,8 @@ public class Solution01 {
 		gravityAssistProgram[1] = 12;
 		gravityAssistProgram[2] = 2;
 		
-		FileUtils.writeToFile("2019/src/output/day2/output_01.txt", String.valueOf(IntcodeComputer.executeProgram(gravityAssistProgram)));
+		IntcodeComputer intcodeComputer = new IntcodeComputer(gravityAssistProgram);
+		intcodeComputer.executeProgram();
+		FileUtils.writeToFile("2019/src/output/day2/output_01.txt", String.valueOf(intcodeComputer.getProgramOutput()));
 	}
 }

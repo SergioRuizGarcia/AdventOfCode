@@ -5,7 +5,6 @@ import java.util.Deque;
 import java.util.HashMap;
 import java.util.Map;
 
-import utils.intcodecomputer.MemoryManager;
 import utils.intcodecomputer.OpCode;
 import utils.intcodecomputer.ParameterMode;
 
@@ -24,14 +23,12 @@ public class InstructionFactory {
 		instructions.put(OpCode.EQUALS, EqualsInstruction.class);
 	}
 	
-	private final MemoryManager memoryManager;
-	
-	public InstructionFactory(MemoryManager memoryManager) {
-		this.memoryManager = memoryManager;
+	public InstructionFactory() {
+		//
 	}
 	
-	public Instruction getNextInstruction() {
-		return getInstruction(String.valueOf(memoryManager.getNextElement()));
+	public Instruction getNextInstruction(int instruction) {
+		return getInstruction(String.valueOf(instruction));
 	}
 	
 	private Instruction getInstruction(String instructionCode) {
@@ -59,7 +56,7 @@ public class InstructionFactory {
 		
 		try {
 			Instruction instruction = instructions.get(opCode).newInstance();
-			return instruction.using(parameterModes).using(memoryManager);
+			return instruction.using(parameterModes);
 		} catch (InstantiationException | IllegalAccessException e) {
 			throw new RuntimeException("Instantiating the instrution was not possible");
 		}

@@ -1,5 +1,7 @@
 package utils.intcodecomputer;
 
+import java.util.Arrays;
+
 public class MemoryManager {
 	private final int[] memory;
 	private int instructionPointer;
@@ -68,6 +70,14 @@ public class MemoryManager {
 			throw new IllegalArgumentException(String.format("The output requested (%d) is out of the maximum range permitted (0 - %d)", outputIndex, outputPointer-1));
 		}
 		return outputs[outputIndex];
+	}
+	
+	public int[] getOutputs() {
+		if (hasOutputs()) {
+			return Arrays.copyOfRange(outputs, 0, outputPointer);
+		} else {
+			return new int[] {};
+		}
 	}
 	
 	public int getLastOutput() {

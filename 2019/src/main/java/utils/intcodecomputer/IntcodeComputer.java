@@ -8,26 +8,34 @@ import utils.intcodecomputer.instruction.InstructionFactory;
 
 public class IntcodeComputer {
 	
-	private IntcodeComputer() {
-		// Not meant to be instantiated
+	private MemoryManager memoryManager;
+	
+	public IntcodeComputer(int[] initialMemory) {
+		memoryManager = new MemoryManager(initialMemory);
+	}
+
+	public int getProgramOutput() {
+		return memoryManager.hasOutputs() ? memoryManager.getLastOutput() : memoryManager.getValueAtAddress(0);
 	}
 	
-	public static int executeProgram(int[] initialMemory, int... args) {
-		MemoryManager memoryManager = new MemoryManager(initialMemory);
+	public int[] getOutputs() {
+		return memoryManager.getOutputs();
+	}
+	
+	public void executeProgram(int... args) {
 		final Deque<Integer> arguments = new ArrayDeque<>();
 		for (int i = 0; i < args.length; i++) {
 			arguments.offer(args[i]);
 		}
 		
 		while(memoryManager.hasMoreToRead()) {
-			InstructionFactory instructionFactory = new InstructionFactory(memoryManager);
-			Instruction instruction = instructionFactory.getNextInstruction();
+			InstructionFactory instructionFactory = new InstructionFactory();
+			Instruction instruction = instructionFactory.getNextInstruction(memoryManager.getNextElement());
 			if (instruction.getOpCode() == OpCode.HALT) {
 				break;
 			}
 			
-			instruction.operate(arguments);
+			instruction.using(memoryManager).operate(arguments);
 		}
-		return memoryManager.hasOutputs() ? memoryManager.getLastOutput() : memoryManager.getValueAtAddress(0);
 	}
 }

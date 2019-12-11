@@ -19,7 +19,9 @@ public class Solution02 {
 			for (int j = 0; j < 100; j++) {
 				initialMemoryState[1] = i;
 				initialMemoryState[2] = j;
-				if (IntcodeComputer.executeProgram(initialMemoryState) == targetValue) {
+				IntcodeComputer intcodeComputer = new IntcodeComputer(initialMemoryState);
+				intcodeComputer.executeProgram();
+				if (intcodeComputer.getProgramOutput() == targetValue) {
 					FileUtils.writeToFile("2019/src/output/day2/output_02.txt", String.valueOf(i * 100 + j));
 					return;
 				}
