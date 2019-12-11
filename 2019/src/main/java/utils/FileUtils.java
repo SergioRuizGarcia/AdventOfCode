@@ -38,6 +38,10 @@ public class FileUtils {
 		writeToFile(outputPath, String.valueOf(content));
 	}
 	
+	public static void writeToFile(final String outputPath, final long content) throws IOException {
+		writeToFile(outputPath, String.valueOf(content));
+	}
+	
 	public static void writeToFile(final String outputPath, final String content) throws IOException {
 		final File outputFile = new File(outputPath);
 		outputFile.getParentFile().mkdirs();
