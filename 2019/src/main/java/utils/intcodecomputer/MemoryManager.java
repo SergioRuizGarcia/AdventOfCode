@@ -1,20 +1,16 @@
 package utils.intcodecomputer;
 
-import java.util.Arrays;
 
 public class MemoryManager {
 	private final int[] memory;
 	private int instructionPointer;
-	private final int[] outputs;
-	private int outputPointer;
+	private int output;
 	
 	public MemoryManager(final int[] memory) {
-		this.memory = new int[memory.length];
+		this.memory = new int[memory.length * 4];
 		System.arraycopy(memory, 0, this.memory, 0, memory.length);
 		instructionPointer = 0;
-		// At most we will have half the length of the whole program as output
-		outputs = new int[memory.length/2];
-		outputPointer = 0;
+		output = Integer.MIN_VALUE;
 	}
 	
 	public int getValueAtAddress(int address) {
@@ -30,6 +26,10 @@ public class MemoryManager {
 	public void setInstructionPointer(int newAddress) {
 		checkValidAddress(newAddress);
 		instructionPointer = newAddress;
+	}
+	
+	public void resetInstructionPointer() {
+		setInstructionPointer(0);
 	}
 	
 	public int getNextElement() {
@@ -57,31 +57,16 @@ public class MemoryManager {
 	}
 	
 	public boolean hasOutputs() {
-		return outputPointer != 0;
+		return output != Integer.MIN_VALUE;
 	}
 	
 	public void writeOutput(int output) {
-		outputs[outputPointer] = output;
-		outputPointer++;
+		this.output = output;
+		System.out.println(output);
 	}
 	
-	public int getNthOutput(int outputIndex) {
-		if (outputIndex >= outputPointer || outputIndex < 0) {
-			throw new IllegalArgumentException(String.format("The output requested (%d) is out of the maximum range permitted (0 - %d)", outputIndex, outputPointer-1));
-		}
-		return outputs[outputIndex];
-	}
-	
-	public int[] getOutputs() {
-		if (hasOutputs()) {
-			return Arrays.copyOfRange(outputs, 0, outputPointer);
-		} else {
-			return new int[] {};
-		}
-	}
-	
-	public int getLastOutput() {
-		return outputs[outputPointer-1];
+	public int getOutput() {
+		return output;
 	}
 	
 	private void checkValidAddress(int address) {

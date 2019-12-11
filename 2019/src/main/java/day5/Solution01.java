@@ -16,9 +16,6 @@ public class Solution01 {
 		int argument = 1;
 		IntcodeComputer intcodeComputer = new IntcodeComputer(initialMemory);
 		intcodeComputer.executeProgram(argument);
-		for (int output : intcodeComputer.getOutputs()) {
-			System.out.println(output);
-		}
 		
 	}
 }
