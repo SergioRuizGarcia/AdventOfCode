@@ -12,7 +12,7 @@ class PasswordPolicy {
 	} 
 	
 	isValid(password) {
-		if (password.length <= this.firstPosition || password.length <= this.secondPosition) {
+		if (password.length < this.firstPosition || password.length < this.secondPosition) {
 			return false;
 		}
 		return password[this.firstPosition] === this.checkedChar ^ password[this.secondPosition] === this.checkedChar;
