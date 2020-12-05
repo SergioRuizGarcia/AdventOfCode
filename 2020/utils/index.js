@@ -20,7 +20,7 @@ const binarySearch = (wholeArray, searchedElement, tracedIndex = 0) => {
 	} else {
 		return wholeArray[midPoint] === searchedElement ? tracedIndex + midPoint : -1;
 	}
-}
+};
 
 exports.readLines = readLines;
 exports.binarySearch = binarySearch;
