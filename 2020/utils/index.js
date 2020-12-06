@@ -1,7 +1,7 @@
 const fs = require('fs');
 
-const readLines = (fileName) => {
-	return fs.readFileSync(fileName).toString().split('\n').filter(line => line !== '');
+const readLines = (fileName, separator='\n') => {
+	return fs.readFileSync(fileName).toString().split(separator).filter(line => line !== '');
 };
 
 const binarySearch = (wholeArray, searchedElement, tracedIndex = 0) => {
