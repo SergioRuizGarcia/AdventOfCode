@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "module": "CommonJS",
+        "moduleResolution": "classic",
+        "target": "es6",
+        "sourceMap": true,
+        "outDir": "compiled"
+    },
+    "include": [
+        "utils",
+        "puzzles/*"
+    ]
+}
