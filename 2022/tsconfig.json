@@ -2,7 +2,7 @@
     "compilerOptions": {
         "module": "CommonJS",
         "moduleResolution": "classic",
-        "target": "es6",
+        "target": "es2017",
         "sourceMap": true,
         "outDir": "compiled"
     },

@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc && cp -r inputs compiled/",
     "day01": "node compiled/puzzles/day-01.js",
-    "day02": "node compiled/puzzles/day-02.js"
+    "day02": "node compiled/puzzles/day-02.js",
+    "day03": "node compiled/puzzles/day-03.js"
   },
   "keywords": [],
   "author": "",
