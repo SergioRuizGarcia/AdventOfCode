@@ -13,7 +13,8 @@
     "day06": "node compiled/puzzles/day-06.js",
     "day07": "node compiled/puzzles/day-07.js",
     "day08": "node compiled/puzzles/day-08.js",
-    "day09": "node compiled/puzzles/day-09.js"
+    "day09": "node compiled/puzzles/day-09.js",
+    "day10": "node compiled/puzzles/day-10.js"
   },
   "keywords": [],
   "author": "",
